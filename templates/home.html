@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style/style_home.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>RSS App</title>
+  </head>
+  <body>
+    <div class="container_header">
+      <!--Navbar-->
+    <div class="navbar">
+      <ul>
+        <a href="/"><li>Home</li></a>
+        <a href="/blog"><li>Blog</li></a>
+        <a href="/contact"><li>Contact</li></a>
+        <img src="./static/images/logo_rss.png" id="logo"/>
+      </ul>
+    <!--Slider-->
+      <div class="slider">
+        <br><br>
+      <h1>Feeds</h1>
+      <br><br>
+      <!--Filter-->
+      <select id="feeds" onchange="filterFeed()">
+        <option value="">Filter by feed</option>
+        {% for feed in link_rss %}
+            <option value={{feed}}>{{ feed|safe }}</option>
+        {% endfor %}
+      </select>
+      <!--Feeds-->
+        {% for flu in link_rss%}
+        <div class="container">
+        <div>
+          <a href="{{flu}}"><p class="bar back intermediate" data-skill="{{flu}}"></p></a>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+      <div class="information">
+        <p id="footer"> A simple Flask App for RSS feeds</p>
+      </div>
+    </div>
+  </div>
+</body>
+      
+
+
+
+
+
+  <script>
+    function filterFeed() {
+        var e = document.getElementById("feeds");
+        var text = e.options[e.selectedIndex].text;
+        document.location.href='/'+text
+    }
+  </script>

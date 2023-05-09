@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style/style_links.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>RSS App</title>
+  </head>
+  <body>
+   
+    <div class="container_header">
+    <!--Navbar-->
+    <div class="navbar">
+      <ul>
+        <a href="/"><li>Home</li></a>
+        <a href="/blog"><li>Blog</li></a>
+        <a href="/contact"><li>Contact</li></a>
+      </ul>
+      <!--Slider-->
+    <div class="slider">
+       <br> <br>
+       <!--Links-->
+       <h1>Links from {{RSS}} </h1>  
+           {% for lin in FEED%} 
+            {% for tit in TITLE%}
+        <div class="container">
+          <div>
+            <a href="{{lin}}"><p class="bar back intermediate" data-skill="{{tit}}"></p></a>
+          </div>
+        </div>
+            {% endfor %}
+           {% endfor %}
+
+    </div>
+    </div>
+    </div>
+</body>
+      
+    
